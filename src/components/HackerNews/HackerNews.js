@@ -20,7 +20,9 @@ class HackerNews extends Component {
   }
 }
 
-const mapStateToProps = (reduxState) => reduxState;
+function mapStateToProps(reduxState){
+  return reduxState.hackerNews;
+};
 
 export default connect(mapStateToProps, {requestArticles})(HackerNews);
 

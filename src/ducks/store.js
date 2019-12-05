@@ -1,8 +1,14 @@
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import hackerNewsReducer from './hackerNewsReducer';
+import mediumReducer from './mediumReducer';
+import redditReducer from './redditReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
-const store = createStore(hackerNewsReducer, composeWithDevTools(applyMiddleware(promiseMiddleware)))
+const rootReducer = combineReducers({
+    hackerNews: hackerNewsReducer,
+    medium: mediumReducer,
+    reddit: redditReducer
+})
 
-export default store;
+export default createStore(rootReducer, applyMiddleware(promiseMiddleware));
